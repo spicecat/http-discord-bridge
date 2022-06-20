@@ -1,12 +1,12 @@
-const { Client } = require('discord.js-selfbot-v13'), { TOKEN, BOT_ID } = require('./var')
+const { Client } = require('discord.js-selfbot-v13'), { TOKEN, TARGET_ID } = require('./var')
 
 const client = new Client()
-let bot = undefined
+let target = undefined
 
 client.once('ready', async () => {
     console.log('Logged in as:', client.user.username)
-    bot = await client.users.fetch(BOT_ID)
-    bot.send('!help')
+    target = await client.users.fetch(TARGET_ID)
+    target.send('hello')
 })
 client.on('messageCreate', async msg => {
     // console.log(msg)
@@ -15,7 +15,7 @@ client.on('messageCreate', async msg => {
 client.login(TOKEN)
 
 client.help = () => {
-    bot.send('!help')
+    target.send('!help')
 }
 
 module.exports = client
